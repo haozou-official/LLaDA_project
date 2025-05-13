@@ -26,3 +26,19 @@ The dataset for the Sudoku is given in [Link](https://drive.google.com/drive/fol
     - The information (4 values) about each of the cell in the puzzle is given in the form of (row of the cell, column of the cell, correct value of the cell, strategy/list of strategy that needs to be applied to get the correct value). 
     - Strategy id: (0) the cell is given, (2) the cell is filled with Lone single, (3) Hidden single, (4) Naked pair, (5) Naked Triplet, (6) Locked Candidate, (7) XY Wing,
     (8) Unique Rectangle
+
+## Evaluation
+
+We evaluate our model using two decoding strategies: **low-confidence remasking** and **autoregressive (AR) decoding**. Each strategy is applied across multiple reasoning benchmarks, including **GSM8K**, **MATH**, **HumanEval**, and **Sudoku**.
+
+To reproduce the evaluation results, run:
+
+```bash
+bash eval_llada.sh
+```
+
+This script performs **on-the-fly** evaluation during generation from LLaDA.
+
+> **Note:** The results reported in our paper are based on **post-evaluation** conducted after generating all outputs from LLaDA. While `eval_llada.sh` is sufficient for quick reproduction, we will release the full post-evaluation pipeline shortly for exact replication of reported numbers.
+
+Please refer to the **Experimental Setup** section of our paper for complete evaluation details.
